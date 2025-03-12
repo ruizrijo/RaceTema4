@@ -198,7 +198,7 @@ cran %>% filter(country == "ES", r_version > "3.4.0")
     (PT).
 
 ```{r}
-
+cran %>% filter(country == "ES" | country == "PT")
 
 
 ```
