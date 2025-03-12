@@ -184,7 +184,7 @@ cran %>% select(-(date:size))
     `plotly`, desde un sistema que ejecuta la versión de R 3.5.1
 
 ```{r}
-
+cran %>% filter(r_version == "3.5.1", package == "plotly")
 ```
 
 6.  Elige aquellas descargas realizadas desde España (ES), con versiones
