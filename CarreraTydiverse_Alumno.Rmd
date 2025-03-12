@@ -147,7 +147,8 @@ rm(mydf)
     resultado.
 
 ```{r}
-
+cran
+glimpse(cran)
 
 ```
 
