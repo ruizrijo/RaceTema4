@@ -175,7 +175,7 @@ cran %>% select(r_arch:country)
 
 ```{r}
 
-
+cran %>% select(-(date:size))
 
 
 ```
