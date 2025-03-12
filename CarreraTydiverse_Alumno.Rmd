@@ -136,7 +136,8 @@ mydf %>% dim
     data frame original (usa `rm`)
 
 ```{r}
-
+cran = as_tibble(mydf)
+rm(mydf)
 
 ```
 
