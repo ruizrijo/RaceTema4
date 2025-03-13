@@ -373,14 +373,10 @@ top_counts_sorted = by_package %>%
     resultado en `top_unique_sorted`.
 
 ```{r}
-
-
-
-
-
-
-
-
+top_unique_sorted <- cran %>%
+  group_by(package) %>%
+  summarise(unique = n_distinct(ip_id), .groups = "drop") %>%
+  filter(unique > quantile(unique, probs = 0.99)) 
 ```
 
 25. Completa lo que se indica usando `pipes`. Selecciona las columnas
