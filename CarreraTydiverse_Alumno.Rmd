@@ -245,6 +245,7 @@ cran2 %>% arrange(package, ip_id)
     `r_version` (desdencente) e `ip_id`(ascendente).
 
 ```{r}
+cran2 %>% arrange(country, desc(r_version), ip_id)
 ```
 
 14. Selecciona el subconjunto formado por las variables, del `cran`,
