@@ -269,7 +269,7 @@ cran3 %>% mutate(size_mb = size / 2 ^20)
     expresado en Gbytes.
 
 ```{r}
-
+cran3 %>% mutate(size_gb = (size / 2 ^20)/ 2^10)
 ```
 
 17. Considera que se ha detectado un error en el sistema donde todos los
@@ -278,7 +278,7 @@ cran3 %>% mutate(size_mb = size / 2 ^20)
     valor correcto.
 
 ```{r}
-
+cran3 %>% mutate(correct_size = size - 1000)
 ```
 
 18. Usa `summarise` para determinar el valor medio del tamaño de las
@@ -286,7 +286,7 @@ cran3 %>% mutate(size_mb = size / 2 ^20)
     `avg_bytes`
 
 ```{r}
-
+cran %>% summarise(avg_bytes = mean(size))
 ```
 
 # Agrupamientos
@@ -298,8 +298,7 @@ cran3 %>% mutate(size_mb = size / 2 ^20)
     con la función `ungroup`.
 
 ```{r}
-
-
+by_package = cran %>% group_by(package)
 ```
 
 20. Usa la función `summarise` sobre el elemento agrupado y calcula el
