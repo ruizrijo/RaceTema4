@@ -754,7 +754,7 @@ hms("03:23:02")
 43. Importa el vector de fechas almacenado el `dt2`
 
 ```{r}
-
+dt2 = hms("03:23:02")
 ```
 
 44. Podemos reasingar nuevos valores a una variable fecha/hora con la
