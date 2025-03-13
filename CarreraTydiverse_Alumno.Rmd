@@ -385,7 +385,7 @@ top_unique_sorted <- cran %>%
 
 ```{r}
 
-
+cran %>% select(ip_id, country, package) %>% print()
 
 ```
 
