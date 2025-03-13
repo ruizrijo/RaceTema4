@@ -661,7 +661,8 @@ sat_tidy %>%
   ggplot(aes(x = score_range, y = prop, colour = sex)) +
   geom_point() +
   facet_wrap(~part) +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  labs(x = "Rango de puntuaciones", y = "Proporción según el sexo")
 
 
 
@@ -676,11 +677,13 @@ sat_tidy %>%
 
 ```{r}
 
+this_day = today()
+print(this_day)
 
-
-
-
-
+year(this_day)
+month(this_day)
+day(this_day)
+wday(this_day)
 
 ```
 
