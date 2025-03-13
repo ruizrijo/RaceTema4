@@ -727,8 +727,12 @@ mdy("March 12, 1975")
     algún carácter separador para eliminar la ambigüedad.
 
 ```{r}
-fecha<-'19200102'
+fecha = "25081985"
+dmy(fecha)
+
+fecha<-'1920:01:02'
 ymd(fecha)
+
 
 
 
