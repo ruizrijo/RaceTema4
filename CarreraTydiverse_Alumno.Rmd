@@ -581,7 +581,14 @@ students3 %>%
 
 ```{r}
 
+student_info = students4 %>% 
+  select(id, name, sex) %>% 
+  unique()
+head(student_info)
 
+gradebook = students4 %>%
+  select(id, class, midterm, final)
+head(gradebook)
 
 
 
