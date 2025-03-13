@@ -627,12 +627,10 @@ bind_rows(failed, passed) %>%
     generar a posteriori.
 
 ```{r}
-head(sat)
-
-sat %>% 
+sat_tidy = sat %>% 
   select(-read_total, -math_total, -write_total) %>%
   pivot_longer(cols = -score_range,
-               names_to = c("Part", "Sex"),
+               names_to = c("part", "sex"),
                names_sep = "_", values_to = "count")
 
 
@@ -646,14 +644,9 @@ sat %>%
     variables `total y prop` respectivamente.
 
 ```{r}
-
-
-
-
-
-
-
-
+sat_tidy %>%
+  group_by(part, sex) %>%
+  mutate(total = sum(count),  prop = count / total)
 
 ```
 
