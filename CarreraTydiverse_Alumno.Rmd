@@ -344,11 +344,11 @@ pack_sum <- cran %>%
     elemento `cran`, usando *pipes***.
 
 ```{r}
+top_counts = by_package %>% 
+  count(package) %>%
+  summarise(umbral = quantile(n, probs = 0.99))
 
-
-
-
-
+  
 
 ```
 
@@ -357,13 +357,6 @@ pack_sum <- cran %>%
     descargas (`count`) y se almacene el la variable `top_counts_sorted`
 
 ```{r}
-
-
-
-
-
-
-
 
 
 ```
