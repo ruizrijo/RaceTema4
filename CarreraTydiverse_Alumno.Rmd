@@ -713,7 +713,10 @@ second(this_moment)
     fecha **"1989 May 17"**. ¿Cómo importarías **"March 12, 1975"**?
 
 ```{r}
-
+my_date <- ymd("2019-02-14")
+class(my_date)
+ymd("1989 May 17")
+mdy("March 12, 1975")
 
 
 ```
