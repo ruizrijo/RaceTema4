@@ -261,7 +261,7 @@ cran3 = cran %>% select(ip_id, package, size)
 
 ```{r}
 
-
+cran3 %>% mutate(size_mb = size / 2 ^20)
 ```
 
 16. Sabiendo que 1Gb son $2^{10}$ Mbytes, crea una nueva variable en
