@@ -561,11 +561,14 @@ students3 %>%
     y utiliza el resultado para realizar la tarea solicitada.
 
 ```{r}
-
-
-
-
-
+students3 %>% 
+  pivot_longer(cols = class1:class5,
+               names_to = "class",
+               values_to = "nota",
+               values_drop_na = TRUE) %>%
+  mutate(class = parse_number(class)) %>%
+  pivot_wider(names_from = test,
+              values_from = nota)
 
 ```
 
