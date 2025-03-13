@@ -607,7 +607,8 @@ head(gradebook)
     puedes usar la función `bind_rows`.
 
 ```{r}
-
+bind_rows(failed, passed) %>%
+  arrange(name, class)
 
 
 ```
