@@ -61,7 +61,7 @@ opts_chunk$set(echo=T,message = F, error = F, warning = F, comment = NA, fig.ali
 ```{r,echo=FALSE}
 
 library(pacman)
-p_load(dplyr,lubridate, tidyr, readr)
+p_load(dplyr,lubridate, tidyr, readr, ggplot2)
 
 ```
 
@@ -433,7 +433,15 @@ hacerlo usando una tubería sin emplear ninguna variable auxiliar.
 `cran%>%...+geom_point()`
 
 ```{r}
-
+cran %>%
+  group_by(country) %>%
+  summarise(total_traffic = sum(size, na.rm = TRUE)) %>%
+  filter(total_traffic > quantile(total_traffic, probs = 0.90)) %>%
+  arrange(desc(total_traffic)) %>%
+  ggplot(aes(x = country, y = total_traffic)) +
+  geom_point() +
+  theme_minimal() +
+  labs(x = "Código de País", y = "Tráfico Generado", title = "Países con Mayor Tráfico de Información")
 
 
 
@@ -464,16 +472,24 @@ de las descargas almacenados en `cran`. Procede de la siguiente forma:
 
 ```{r}
 
+code_paises <- read_csv("data/GeoLite2-Country-Locations-es.csv", locale = locale(encoding = "UTF-8"))
 
+cran <- cran %>%
+  left_join(code_paises %>% select(country_iso_code, continent_code), by = c("country" = "country_iso_code"))
 
+flujo_datos <- cran %>%
+  group_by(continent_code.x) %>%
+  summarise(total_traffic = sum(size, na.rm = TRUE)) %>%
+  mutate(total_traffic_TB = total_traffic / (2^40))  # Convertir a Terabytes
 
+flujo_datos <- flujo_datos %>%
+  arrange(desc(total_traffic_TB))
 
-
-
-
-
-
-
+ggplot(flujo_datos, aes(x = reorder(continent_code.x, -total_traffic_TB), y = total_traffic_TB)) +
+  geom_bar(stat = "identity", fill = "steelblue") +
+  labs(x = "Continente", y = "Flujo de Datos (Terabytes)", title = "Flujo de Datos por Continente") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
 
 ```
