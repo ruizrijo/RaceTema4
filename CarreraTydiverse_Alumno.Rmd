@@ -471,6 +471,7 @@ de las descargas almacenados en `cran`. Procede de la siguiente forma:
     Terabytes (1Tb=2\^40bytes)
 
 ```{r}
+# A veces falla pero hay que ejecutar dos veces, no se por que
 
 code_paises <- read_csv("data/GeoLite2-Country-Locations-es.csv", locale = locale(encoding = "UTF-8"))
 
@@ -486,7 +487,7 @@ flujo_datos <- flujo_datos %>%
   arrange(desc(total_traffic_TB))
 
 ggplot(flujo_datos, aes(x = reorder(continent_code.x, -total_traffic_TB), y = total_traffic_TB)) +
-  geom_bar(stat = "identity", fill = "steelblue") +
+  geom_bar(stat = "identity", fill = "blue") +
   labs(x = "Continente", y = "Flujo de Datos (Terabytes)", title = "Flujo de Datos por Continente") +
   theme_minimal() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
@@ -508,9 +509,12 @@ son las variables ?. Transfórmalo en un conjunto `tidy` con las
 variables, `grade, sex y count`
 
 ```{r}
+load(file ='./data/datostidyr.Rdata')
 
-
-
+students %>%
+  pivot_longer(cols = c(male, female),  
+               names_to = "sex",      
+               values_to = "count")  
 ```
 
 30. Considera el conjunto ´students2´, que es similar al primero pero
@@ -520,7 +524,11 @@ variables, `grade, sex y count`
     nueva variable `class`)
 
 ```{r}
-
+students2 %>%
+  pivot_longer(cols = c(male_1, female_1, male_2, female_2),
+               names_to = c("sex", "class"), 
+               names_sep = "_",          
+               values_to = "count")          
 
 
 
