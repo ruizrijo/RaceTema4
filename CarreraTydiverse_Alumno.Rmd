@@ -764,6 +764,7 @@ dt2 = hms("03:23:02")
     contenga la hora actual.
 
 ```{r}
+update(this_moment, hours = hour(now()), minutes = minute(now()), seconds = seconds(now()))
 
 ```
 
