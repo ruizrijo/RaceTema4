@@ -306,7 +306,7 @@ by_package = cran %>% group_by(package)
     agrupamiento en el resultado.
 
 ```{r}
-
+by_package %>% summarise(avg_size = mean(size))
 ```
 
 21. Para el agrupamiento creado calcula:
