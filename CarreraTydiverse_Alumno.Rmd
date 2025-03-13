@@ -402,7 +402,7 @@ cran %>% mutate(size_mb = size / 2 ^20)
     Mbytes
 
 ```{r}
-
+cran %>% mutate(size_mb = size / 2 ^20) %>% filter(size_mb <= 0.5)
 
 
 ```
