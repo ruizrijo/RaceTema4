@@ -627,8 +627,13 @@ bind_rows(failed, passed) %>%
     generar a posteriori.
 
 ```{r}
+head(sat)
 
-
+sat %>% 
+  select(-read_total, -math_total, -write_total) %>%
+  pivot_longer(cols = -score_range,
+               names_to = c("Part", "Sex"),
+               names_sep = "_", values_to = "count")
 
 
 
