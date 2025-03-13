@@ -393,7 +393,7 @@ cran %>% select(ip_id, country, package) %>% print()
     descarga en megabytes.
 
 ```{r}
-
+cran %>% mutate(size_mb = size / 2 ^20)
 
 
 ```
