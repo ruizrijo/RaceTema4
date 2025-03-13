@@ -796,7 +796,22 @@ update(this_moment, hours = hour(now()), minutes = minute(now()), seconds = seco
     para facilitar estas tareas.
 
 ```{r}
+nyc = now(tzone = "America/New_York")
+nyc
 
+salida = nyc + days(2)
+salida
+
+salida = update(salida, hours = 17, minutes = 34)
+salida
+
+llegada = salida + hours(15) + minutes(50)
+llegada
+
+with_tz(llegada,"Hongkong")
+
+ultimavez = ymd(20080617, tz = "Singapore")
+as.period(interval(ultimavez, llegada))
 
 
 
